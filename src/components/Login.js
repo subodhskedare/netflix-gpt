@@ -48,13 +48,13 @@ const Login = () => {
           ref={email}
           type="text"
           placeholder="Email Address"
-          className="p-2 m-1 rounded-sm w-full text-black  bg-gray-600 "
+          className="p-2 m-1 rounded-sm w-full text-white  bg-gray-600 "
         ></input>
         <input
           ref={password}
           type="password"
           placeholder="Password"
-          className="p-2 m-1 rounded-sm w-full text-black bg-gray-600"
+          className="p-2 m-1 rounded-sm w-full text-white bg-gray-600"
         ></input>
         <p className="font-bold p-2  ">{validationErrorMsg}</p>
         <button
