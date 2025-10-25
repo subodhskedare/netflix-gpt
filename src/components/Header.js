@@ -22,7 +22,7 @@ const Header = () => {
   };
 
   useEffect(() => {
-    const unsubcribe = onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         const { uid, displayName, photoURL } = user;
         dispatch(
@@ -34,7 +34,7 @@ const Header = () => {
         navigate("/");
       }
     });
-    return () => unsubcribe();
+    return () => unsubscribe();
   }, []);
   return (
     <div className="absolute w-screen bg-gradient-to-b from-black z-10 flex justify-between">
