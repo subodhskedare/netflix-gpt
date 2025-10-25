@@ -3,7 +3,6 @@ import { BACKGROUND_IMG } from "../utils/constant";
 import Header from "./Header";
 import { useState, useRef } from "react";
 import { validate } from "./../utils/validation";
-import { useNavigate } from "react-router";
 import { auth } from "../utils/firebase";
 import {
   createUserWithEmailAndPassword,
@@ -15,7 +14,6 @@ import { addUser } from "./../redux/userSlice";
 
 const Login = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [validationErrorMsg, setValidationErrorMsg] = useState("");
   const email = useRef(null);
@@ -63,7 +61,6 @@ const Login = () => {
                   photoURL: photoURL,
                 })
               );
-              navigate("/browse");
             })
             .catch((error) => {
               // An error occurred
@@ -89,7 +86,6 @@ const Login = () => {
           // Signed in
           const user = userCredential.user;
           console.log("user => ", user);
-          navigate("/browse");
         })
         .catch((error) => {
           const errorCode = error.code;

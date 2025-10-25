@@ -1,22 +1,40 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { LOGO_URL } from "../utils/constant";
 import { signOut } from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 import { useSelector } from "react-redux";
+import { removeUser, addUser } from "./../redux/userSlice";
+import { onAuthStateChanged } from "firebase/auth";
+import { useDispatch } from "react-redux";
 
 const Header = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const user = useSelector((store) => store.user);
   const handleSignOut = () => {
     signOut(auth)
-      .then(() => {
-        navigate("/");
-      })
+      .then(() => {})
       .catch((error) => {
         // An error happened.
       });
   };
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const { uid, displayName, photoURL } = user;
+        dispatch(
+          addUser({ uid: uid, displayName: displayName, photoURL: photoURL })
+        );
+        navigate("/browse");
+      } else {
+        dispatch(removeUser());
+        navigate("/");
+      }
+    });
+  }, []);
   return (
     <div className="absolute w-screen bg-gradient-to-b from-black z-10 flex justify-between">
       <img className="w-44 ml-44" src={LOGO_URL} alt="logo" />
