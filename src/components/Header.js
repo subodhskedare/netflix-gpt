@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import { removeUser, addUser } from "./../redux/userSlice";
 import { onAuthStateChanged } from "firebase/auth";
 import { useDispatch } from "react-redux";
+import { USER_ICON_IMG } from "../utils/constant";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -41,11 +42,7 @@ const Header = () => {
       <img className="w-44 ml-44" src={LOGO_URL} alt="logo" />
       {user ? (
         <div className="flex ">
-          <img
-            className="w-12 h-12 m-3 "
-            alt="userIcon"
-            src="https://occ-0-2890-2164.1.nflxso.net/dnm/api/v6/vN7bi_My87NPKvsBoib006Llxzg/AAAABTZ2zlLdBVC05fsd2YQAR43J6vB1NAUBOOrxt7oaFATxMhtdzlNZ846H3D8TZzooe2-FT853YVYs8p001KVFYopWi4D4NXM.png?r=229"
-          />
+          <img className="w-12 h-12 m-3 " alt="userIcon" src={USER_ICON_IMG} />
           <button className="m-3 font-bold text-white" onClick={handleSignOut}>
             Sign Out
           </button>
