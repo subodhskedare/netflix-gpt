@@ -3,8 +3,19 @@ import { BACKGROUND_IMG } from "../utils/constant";
 import Header from "./Header";
 import { useState, useRef } from "react";
 import { validate } from "./../utils/validation";
+import { useNavigate } from "react-router";
+import { auth } from "../utils/firebase";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  updateProfile,
+} from "firebase/auth";
+import { useDispatch } from "react-redux";
+import { addUser } from "./../redux/userSlice";
 
 const Login = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [validationErrorMsg, setValidationErrorMsg] = useState("");
   const email = useRef(null);
@@ -20,6 +31,73 @@ const Login = () => {
       password.current.value
     );
     setValidationErrorMsg(validationErrorMsg);
+
+    if (validationErrorMsg) return;
+
+    // signin and sign up
+    console.log("here");
+    if (!isSignInForm) {
+      //sign up
+
+      createUserWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          // Signed up
+          const user = userCredential.user;
+          console.log("user => ", user);
+          updateProfile(auth.currentUser, {
+            displayName: email.current.value,
+            photoURL:
+              "https://occ-0-2890-2164.1.nflxso.net/dnm/api/v6/vN7bi_My87NPKvsBoib006Llxzg/AAAABTZ2zlLdBVC05fsd2YQAR43J6vB1NAUBOOrxt7oaFATxMhtdzlNZ846H3D8TZzooe2-FT853YVYs8p001KVFYopWi4D4NXM.png?r=229",
+          })
+            .then(() => {
+              const { uid, displayName, photoURL } = user;
+
+              dispatch(
+                addUser({
+                  uid: uid,
+                  displayName: displayName,
+                  photoURL: photoURL,
+                })
+              );
+              navigate("/browse");
+            })
+            .catch((error) => {
+              // An error occurred
+              // ...
+            });
+
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log("error=> ", errorCode, errorMessage);
+          setValidationErrorMsg(errorCode + "-" + errorMessage);
+        });
+    } else {
+      //sign in
+      signInWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          console.log("user => ", user);
+          navigate("/browse");
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log("error=> ", errorCode, errorMessage);
+          setValidationErrorMsg(errorCode + "-" + errorMessage);
+        });
+    }
   };
 
   return (
