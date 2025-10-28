@@ -45,7 +45,6 @@ const Login = () => {
         .then((userCredential) => {
           // Signed up
           const user = userCredential.user;
-          console.log("user => ", user);
           updateProfile(auth.currentUser, {
             displayName: email.current.value,
             photoURL:
@@ -85,7 +84,6 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          console.log("user => ", user);
         })
         .catch((error) => {
           const errorCode = error.code;

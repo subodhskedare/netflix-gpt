@@ -6,4 +6,14 @@ const BACKGROUND_IMG =
 
 const USER_ICON_IMG =
   "https://occ-0-2890-2164.1.nflxso.net/dnm/api/v6/vN7bi_My87NPKvsBoib006Llxzg/AAAABTZ2zlLdBVC05fsd2YQAR43J6vB1NAUBOOrxt7oaFATxMhtdzlNZ846H3D8TZzooe2-FT853YVYs8p001KVFYopWi4D4NXM.png?r=229";
-export { LOGO_URL, BACKGROUND_IMG, USER_ICON_IMG };
+
+const options = {
+  method: "GET",
+  headers: {
+    accept: "application/json",
+    Authorization:
+      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0MDE2Yjc2MWRlZjk1M2ExMGEyNDM1MTljODY5MWNiMSIsIm5iZiI6MTc2MTQwMTI0NS4zNCwic3ViIjoiNjhmY2Q5OWQ3MWQ1NzBmMmIyM2JmNGFkIiwic2NvcGVzIjpbImFwaV9yZWFkIl0sInZlcnNpb24iOjF9.oTO8mpr_behAiDRtllG8sTiAN4Pod6boXJQrLTF9l60",
+  },
+};
+
+export { LOGO_URL, BACKGROUND_IMG, USER_ICON_IMG, options };
