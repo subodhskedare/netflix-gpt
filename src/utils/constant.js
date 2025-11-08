@@ -16,4 +16,6 @@ const options = {
   },
 };
 
-export { LOGO_URL, BACKGROUND_IMG, USER_ICON_IMG, options };
+const IMG_CDN_URL = "https://image.tmdb.org/t/p/w500/";
+
+export { LOGO_URL, BACKGROUND_IMG, USER_ICON_IMG, options, IMG_CDN_URL };
