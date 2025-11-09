@@ -11,8 +11,7 @@ const options = {
   method: "GET",
   headers: {
     accept: "application/json",
-    Authorization:
-      "Bearer " + process.env.REACT_APP_TMDB_TOKEN",
+    Authorization: "Bearer " + process.env.REACT_APP_TMDB_TOKEN,
   },
 };
 
@@ -23,7 +22,6 @@ const SUPPORTED_LANGUAGE = [
   { identifier: "hindi", name: "Hindi" },
   { identifier: "spanish", name: "Spanish" },
 ];
-
 
 export {
   LOGO_URL,

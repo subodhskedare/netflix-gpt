@@ -10,12 +10,10 @@ const GPTSearchBar = () => {
   const handleGPTSearchClick = async () => {
     console.log(searchText.current.value);
 
-    const completion = await openAI.chat.completions.create({
-      model: "gpt-4o",
-      messages: [{ role: "user", content: searchText.current.value }],
-    });
-
-    console.log(completion);
+    // const completion = await openAI.chat.completions.create({
+    //   model: "gpt-4o",
+    //   messages: [{ role: "user", content: searchText.current.value }],
+    // });
   };
   return (
     <div className="pt-[10%] flex felx justify-center ">
