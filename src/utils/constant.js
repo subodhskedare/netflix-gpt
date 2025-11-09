@@ -24,6 +24,7 @@ const SUPPORTED_LANGUAGE = [
   { identifier: "spanish", name: "Spanish" },
 ];
 
+
 export {
   LOGO_URL,
   BACKGROUND_IMG,
