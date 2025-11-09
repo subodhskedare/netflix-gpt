@@ -18,4 +18,17 @@ const options = {
 
 const IMG_CDN_URL = "https://image.tmdb.org/t/p/w500/";
 
-export { LOGO_URL, BACKGROUND_IMG, USER_ICON_IMG, options, IMG_CDN_URL };
+const SUPPORTED_LANGUAGE = [
+  { identifier: "en", name: "English" },
+  { identifier: "hindi", name: "Hindi" },
+  { identifier: "spanish", name: "Spanish" },
+];
+
+export {
+  LOGO_URL,
+  BACKGROUND_IMG,
+  USER_ICON_IMG,
+  options,
+  IMG_CDN_URL,
+  SUPPORTED_LANGUAGE,
+};
