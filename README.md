@@ -638,8 +638,8 @@ This project is licensed under the MIT License.
 
 **Subodh Kedare**
 
-- GitHub: [@yourusername](https://github.com/yourusername)
-- LinkedIn: [Your LinkedIn](https://linkedin.com/in/yourprofile)
+- GitHub: [@subodhskedare]([https://github.com/yourusername](https://github.com/subodhskedare?tab=repositories))
+- LinkedIn: [Subodh Kedare](https://www.linkedin.com/in/subodh-kedare-170665170/)
 
 ---
 
